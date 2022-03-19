@@ -7,4 +7,25 @@
 	<select id="list" resultType="com.board.domain.BoardVO">
 	 select * from board
 	</select>
+	
+	<select id="read" resultType="com.board.domain.BoardVO">
+		select num, title, content, writer, nickname, hit, regdate
+		from board 
+		whrer num=#{num}
+	</select>
+	
+	<insert id="write" parameterType="com.board.domain.BoardVO">
+		insert into board(num, title, content, writer, nickname, hit, regdate)
+		values(#{num},#{title},#{content},#{writer},#{nickname},#{hit},{regdate})
+	</insert>
+	
+	<update id="update">
+		update board 
+		set title=#{title}, content=#{content}, writer=#{writer}, nickname=#{nickname} 
+		where num=#{num}
+	</update>
+	
+	<delete id="delete">
+		delete from board where num=#{num}
+	</delete>
 </mapper>

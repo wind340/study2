@@ -36,7 +36,9 @@
 		<%} %>
 	</tbody>
 </table>
-
+	<div>
+		<a href="/board/write">글 등록</a>
+	</div>
 
 </body>
 </html>
