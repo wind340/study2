@@ -1,27 +1,30 @@
 package com.board.domain;
 /*
- * SQL> create table myBoard (
-  2      bno       number            not null,
-  3      title     varchar2(30)      not null,
-  4      content   varchar2(2000)    not null,
-  5      writer    varchar2(30)      not null,
-  6      regDate   date              default sysdate,
-  7      viewCnt   number            default 0,
-  8      primary key(bno)
-  9  );
- * */
+ * SQL>
+create table myBoard (
+bno      		number				not null,
+title     		varchar2(30)		not null,
+content		varchar2(2000)	not null,
+writer    		varchar2(30)		not null,
+regDate 		date					default sysdate,
+viewCnt 		number				default 0,
+primary key(bno)
+);
+create sequence myBoard_seq;
+*/
 
 import java.util.Date;
 
 public class BoardVO {
-
-	int bno;
-	String title;
-	String content;
-	String wirter;
-	Date date;
-	int viewCnt;
 	
+	private int bno;
+	private String title;
+	private String content;
+	private String writer;
+	private Date regDate;
+	private int viewCnt;
+
+
 	public int getBno() {
 		return bno;
 	}
@@ -40,17 +43,17 @@ public class BoardVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getWirter() {
-		return wirter;
+	public String getWriter() {
+		return writer;
 	}
-	public void setWirter(String wirter) {
-		this.wirter = wirter;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
-	public Date getDate() {
-		return date;
+	public Date getRegDate() {
+		return regDate;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 	public int getViewCnt() {
 		return viewCnt;
@@ -58,6 +61,7 @@ public class BoardVO {
 	public void setViewCnt(int viewCnt) {
 		this.viewCnt = viewCnt;
 	}
+
 
 		
 }

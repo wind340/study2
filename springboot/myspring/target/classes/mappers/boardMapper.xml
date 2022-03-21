@@ -2,30 +2,47 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.board.mappers.board">
+<mapper namespace="com.board.mappers.boardMapper">
 	<!-- 게시물 목록 -->
 	<select id="list" resultType="com.board.domain.BoardVO">
-	 select * from board
+	 select * from myBoard order by bno desc
 	</select>
 	
 	<select id="read" resultType="com.board.domain.BoardVO">
-		select num, title, content, writer, nickname, hit, regdate
-		from board 
-		whrer num=#{num}
+		select bno, title, content, writer, regDate, viewCnt
+		from myBoard 
+		where bno=#{bno}
 	</select>
 	
 	<insert id="write" parameterType="com.board.domain.BoardVO">
-		insert into board(num, title, content, writer, nickname, hit, regdate)
-		values(#{num},#{title},#{content},#{writer},#{nickname},#{hit},{regdate})
+	 insert into
+	  myBoard(bno, title, content, writer)
+	   values(myBoard_seq.nextval, #{title}, #{content}, #{writer})
 	</insert>
 	
 	<update id="update">
-		update board 
-		set title=#{title}, content=#{content}, writer=#{writer}, nickname=#{nickname} 
-		where num=#{num}
+		update myBoard 
+		set title=#{title}, content=#{content} 
+		where bno=#{bno}
 	</update>
 	
 	<delete id="delete">
-		delete from board where num=#{num}
+		delete from myBoard where bno=#{bno}
 	</delete>
+	
+	<select id="count" resultType="int">
+		select count(bno) from myBoard
+	</select>
+	
+	<select id="listPage" parameterType="hashMap" resultType="com.board.domain.BoardVO">
+    select bno, title, content, writer, regDate, viewCnt
+       from (
+           select bno, title, content, writer, regDate, viewCnt,
+               row_number() over(order by bno desc) as rNum
+           from myBoard
+     ) mb
+    where rNum between #{displayPost} and #{postNum}
+        order by bno desc
+	</select>
+
 </mapper>

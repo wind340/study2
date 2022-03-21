@@ -1,53 +1,40 @@
-<%@page import="com.board.domain.BoardVO"%>
-<%@ page contentType="text/html;charset=UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-<title>게시판</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<script type="text/javascript">
+function regist(){
+	form1.action="/board/write";
+	form1.method="post";
+	form1.submit();
+}
+</script>
 </head>
 <body>
-	<div id="root">
 
-		<hr />
+<h3>Contact Form</h3>
 
-		<nav>처음화면 - 글쓰기 - 로그인</nav>
-
-		<hr />
-
-		<section id="container">
-
-			<form role="form" method="post" autocomplete="off">
-				<p>
-					<label for="num">글 번호</label>
-					<input type="text" id="num" name="num" readonly="readonly" />
-				</p>
-
-				<p>
-					<label for="title">글 제목</label>
-					<input type="text" id="title"
-						name="title" readonly="readonly" />
-				</p>
-				<p>
-					<label for="content">글 내용</label>
-					<textarea id="content" name="content" readonly="readonly"></textarea>
-				</p>
-				<p>
-					<label for="writer">작성자</label>
-					<input type="text" id="writer" name="writer" readonly="readonly" />
-						<br />
-					<label>작성 날짜</label> 
-					<span>
-					<input type="datetime" value="regdate" pattern="yyyy-MM-dd" />
-					</span>
-				</p>
-					<button type="submit">작성완료</button>
-			</form>
-
-		</section>
-
-		<hr />
-
-	</div>
+<div class="container">
+  <form name="form1">
+    <input type="text" 		name="title" 			placeholder="Your name..">
+    <input type="text" 		name="writer" 		placeholder="Your last name..">
+    <textarea 					name="content" 		placeholder="Write something.." style="height:200px"></textarea>
+ 	<p>
+    <input type="button" value="Submit" onClick="regist()">
+  </form>
+</div>
 
 </body>
 </html>
