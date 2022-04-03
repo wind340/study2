@@ -1,5 +1,8 @@
 package com.cos.jwt.config.jwt;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,6 +26,28 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException {
 		System.out.println("JwtAuthenticationFilter:로그인 시도중");
+		//1.username, password 를 받아서
+		
+		try {
+			BufferedReader br = request.getReader();
+			
+			String input = null;
+			while((input=br.readLine()) != null) {
+				System.out.println(input);
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		//2.정상인지 로그인을 시도해본다. authenticationManager로 로그인 시도를 하면 PrincipalDetailsService가 호출되고 loadUserByUsername() 함수가 실행됨.
+
+		//3.PrincipalDetails를 세션에 담고 (담는 이유는 권한관리를 위함이다.)
+
+		//4.JWT토큰을 만들어서 응답해주면 됨.
+
+	
 		return super.attemptAuthentication(request, response);
 	}
 }
