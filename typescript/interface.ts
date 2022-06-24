@@ -77,8 +77,7 @@ const chul2: Players = {
   name: "jake",
 };
 // 하지만 이렇게 type으로 지정하는것은 객체지향적이지 않을수있다.
-//아래의 인터페이스로 구현해보자
-
+// 아래는 인터페이스로 구현했지만 type으로는 중복된 쓸수없다
 interface User2 {
   name: string;
 }
