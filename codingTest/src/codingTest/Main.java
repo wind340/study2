@@ -8,19 +8,20 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 	
-		//2739 문제 N을 입력받은 뒤, 구구단 N단을 출력하는 프로그램을 작성하시오
-
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int a = Integer.parseInt(br.readLine());	
-		br.close();
-		
+		//10950 두 정수 A와 B를 입력받은 다음, A+B를 출력하는 프로그램을 작성하시오.
+	
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));		
+		int t = Integer.parseInt(br.readLine());
 		StringBuilder sb = new StringBuilder();
-        
-		for(int i = 1; i<10;i++) {
-			sb.append(a).append(' ').append('*').append(' ').append(i);
-			sb.append(' ').append('=').append(' ').append(a*i).append('\n');
+		
+		for(int i=0; i<t; i++) {
+			String[] num = br.readLine().split(" ");
+			int a = Integer.parseInt(num[0]);
+			int b = Integer.parseInt(num[1]);
+			int sum = a+b;
+			sb.append(sum);
+			sb.append('\n');
 		}
-		System.out.print(sb);
+		System.out.println(sb);
 	}
-
 }
