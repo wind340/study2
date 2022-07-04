@@ -5,20 +5,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Main {
-
-	public static void main(String[] args) throws IOException {
-	
-		//8393 n이 주어졌을 때, 1부터 n까지 합을 구하는 프로그램을 작성하시오.
-	
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));		
-		int n = Integer.parseInt(br.readLine());
+	public static void main(String[] args) throws IOException{
+		//2741 1부터 입력받은 자연수 N까지 출력
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int N = Integer.parseInt(br.readLine());
+		StringBuilder sb = new StringBuilder();
+ 
+		for (int i = 1; i <= N; i++) {
+			sb.append(i).append('\n');
+		}
 		br.close();
-		
-		int s = 0;
-		
-		for(int i =1; i<=n; i++) s+=i;
-		
-		System.out.println(s);
-		
+		System.out.println(sb);
 	}
 }
