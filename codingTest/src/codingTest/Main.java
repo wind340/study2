@@ -3,26 +3,23 @@ package codingTest;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.util.HashSet;
+import java.util.StringTokenizer;
 
 public class Main {
 	public static void main(String[] args) throws IOException{
-		// 2577 세 개의 자연수 A, B, C가 주어질 때 A × B × C를 계산한 결과에
-		// 0부터 9까지 각각의 숫자가 몇 번씩 쓰였는지를 구하는 프로그램을 작성하시오.
+		// 3052 두 자연수 A와 B가 있을 때, A%B는 A를 B로 나눈 나머지 이다. 
+		// 예를 들어, 7, 14, 27, 38을 3으로 나눈 나머지는 1, 2, 0, 2이다. 
+		// 첫째 줄에, 42로 나누었을 때, 서로 다른 나머지가 몇 개 있는지 출력한다.
 		
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int mul = Integer.parseInt(br.readLine())*Integer.parseInt(br.readLine())*Integer.parseInt(br.readLine());
-        
-        int[] arr = new int[10];
-        
-        while(mul!=0) {
-        	arr[mul%10]++;
-        	mul/=10;
+        HashSet<Integer> h = new HashSet<Integer>();
+
+        for(int i=0; i<10; i++) {
+        	h.add(Integer.parseInt(br.readLine())%42);
         }
-        
-        for(int result :arr) {
-        	System.out.println(result);
-        }
-        
+        System.out.println(h.size());
 	}
 }
