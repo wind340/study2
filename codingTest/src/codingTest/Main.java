@@ -1,6 +1,5 @@
 package codingTest;
 
-import java.util.Arrays;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
@@ -9,24 +8,43 @@ import java.util.StringTokenizer;
 public class Main {
 	public static void main(String[] args) throws IOException {
 		
-		//1546 입력받은 숫자중 가장큰수를 기준으로 나눈다음 100을 곱하여 새로운 평균값을 구하라
-		
+		//8958 첫째 줄에 테스트 케이스의 개수가 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있고, 
+		//길이가 0보다 크고 80보다 작은 문자열이 주어진다. 문자열은 O와 X만으로 이루어져 있다.
+		/*
+			5
+			OOXXOXXOOO
+			OOXXOOXXOO
+			OXOXOXOXOXOXOX
+			OOOOOOOOOO
+			OOOOXOOOOXOOOOX
+		*/
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
- 
-		double arr[] = new double[Integer.parseInt(br.readLine())];
-        
-		StringTokenizer st = new StringTokenizer(br.readLine()," ");
+		StringBuilder sb = new StringBuilder();
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int n = Integer.parseInt(st.nextToken());
 		
-		for(int i = 0; i < arr.length; i++) {
-			arr[i] = Double.parseDouble(st.nextToken());
+		String[] arr = new String[n];
+		
+
+		for(int i=0; i<n; i++) {
+			arr[i] = br.readLine();
 		}
 		
-		double sum = 0;
-		Arrays.sort(arr);
-		
-		for(int i = 0; i < arr.length; i++) {
-			sum += ((arr[i] / arr[arr.length - 1]) * 100);
+		for(int i=0; i<n; i++) {
+			int cnt = 0;
+			int sum = 0;
+			
+			for(int j=0; j<arr[i].length(); j++ ) {
+				if(arr[i].charAt(j)=='O') {
+					cnt++;
+				}
+				else {
+					cnt = 0;
+				}
+				sum+=cnt;
+			}
+			sb.append(sum).append('\n');
 		}
-		System.out.print(sum / arr.length);
+		System.out.println(sb);
 	}
 }
